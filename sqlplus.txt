@@ -1,0 +1,5 @@
+﻿conn /as sysdba			// 관리할 때 사용
+alter user hr account unlock;	// hr 테이블스페이스 언락
+alter user hr identified by hr; // 비밀번호 지정
+conn hr/hr			// hr 연결
+desc employees;			// employees 테이블 구조 보기
