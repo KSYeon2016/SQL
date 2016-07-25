@@ -44,4 +44,4 @@ select region_name from REGIONS order by length(REGION_NAME) asc;
 /* 문제10
 부서 사무실이 위치한 도시는 어떤 것들이 있습니까? 중복되지 않도록 도시 이름을 소문자로 올림차순(ASC)로 정렬해 주세요 */
 select * from LOCATIONS;
-select distinct(LOWER(city)) from LOCATIONS;
+select distinct(LOWER(city)) from LOCATIONS order by LOWER(city) asc;
