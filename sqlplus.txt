@@ -8,3 +8,19 @@ conn system/system						// 비번설정(관리자권한x)
 create user skudb identified by skudb;	// db생성, 비번 설정
 grant connect, resource to skudb;		// 권한 설정
 @c:\create.sql							// sql파일 스크립트 실행
+
+create user ksy16 identified by 1125;	// 계정 생성
+drop user ksy16;						// 계정 삭제
+grant connect, resource to ksy16;		// 일반 사용자 권한 부여
+select username from user_users;
+select username from all_users;
+grant create session to ksy16;			// 연결만 되는 권한(드랍 후)
+
+conn /as sysdba
+desc dba_users;
+select username, user_id from dba_users;
+revoke create session from ksy16;		// 권한 삭제
+create role reviewer;					// 롤 생성
+grant select any table to reviewer;		// 리뷰어 롤에 권한 부여
+grant create session to reviewer;		// 리뷰어 롤에 접속 권한
+grant reviewer to ksy16;				// 리뷰어 롤 권한을 계정에
